@@ -11,7 +11,13 @@ interface TokenPayload {
   username: string;
 }
 
+interface Login {
+  username: string;
+  password: string;
+}
+
 export {
   User,
   TokenPayload,
+  Login,
 };

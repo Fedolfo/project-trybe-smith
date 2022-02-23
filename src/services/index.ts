@@ -1,6 +1,7 @@
-import { create as getCreate, allUsers as getUsers } from './users';
+import newUser from './users/create';
+import login from './users/login';
 
 export {
-  getCreate,
-  getUsers,
+  newUser,
+  login,
 };
