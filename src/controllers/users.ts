@@ -27,8 +27,11 @@ export const addLogin: RequestHandler = async (req, res) => {
     const { username, password } = req.body;
     const login = await users.login({ username, password });
 
-    if (login.length === 0) {
-      return res.status(401).json({ message: 'Username or password invalid' });
+    const findCredentials = login.find((user) =>
+      user.username === username || user.password === password);
+
+    if (!findCredentials) {
+      return res.status(401).json({ error: 'Username or password invalid' });
     }
 
     const jwtConfig = {
