@@ -10,15 +10,14 @@ interface DATA extends JwtPayload {
 
 const prisma = new PrismaClient();
 
-async function findNameUser(name: string) {
+async function findNameUser(id: number, name: string) {
   const user = await prisma.users.findUnique({ where: {
+    id,
     username: name,
   },
   }) || undefined;
   return user;
 }
-
-const secret = process.env.JWT_SECRET || 'cebola com repolho';
 
 const tokenjwt: RequestHandler = async (req, res, next) => {
   const token = req.headers.authorization;
@@ -27,9 +26,10 @@ const tokenjwt: RequestHandler = async (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, secret) as DATA;
-    const receivedEmail = decoded.data.username;
-    const username = await findNameUser(receivedEmail);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as DATA;
+    const receivedUsername = decoded.data.username;
+    const receivedIdUser = decoded.data.id;
+    const username = await findNameUser(receivedIdUser, receivedUsername);
 
     req.username = username;
     return next();

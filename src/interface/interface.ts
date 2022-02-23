@@ -7,6 +7,7 @@ interface User {
 }
 
 interface TokenPayload {
+  id: number;
   username: string;
 }
 
