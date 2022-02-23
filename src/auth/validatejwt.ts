@@ -8,6 +8,8 @@ interface DATA extends JwtPayload {
   data: TokenPayload
 }
 
+const secret = process.env.JWT_SECRET || 'senhasecreta';
+
 async function findNameUser(id: number, name: string) {
   const user = await prisma.users.findUnique({ where: {
     id,
@@ -24,7 +26,7 @@ const tokenjwt: RequestHandler = async (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as DATA;
+    const decoded = jwt.verify(token, secret) as DATA;
     const receivedUsername = decoded.data.username;
     const receivedIdUser = decoded.data.id;
     const username = await findNameUser(receivedIdUser, receivedUsername);
