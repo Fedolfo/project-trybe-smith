@@ -2,22 +2,22 @@ import Joi from 'joi';
 import { Request, Response, NextFunction } from 'express';
 
 const schema = Joi.object({
-  username: Joi.string().min(2).required().messages({
+  username: Joi.string().min(3).required().messages({
     'any.required': 'Username is required',
     'string.base': 'Username must be a string',
     'string.min': 'Username must be longer than 2 characters',
   }),
-  classe: Joi.string().min(2).required()
+  classe: Joi.string().min(3).required()
     .messages({
       'any.required': 'Classe is required',
       'string.base': 'Classe must be a string',
       'string.min': 'Classe must be longer than 2 characters',
     }),
-  level: Joi.number().greater(0).required()
+  level: Joi.number().strict().greater(0).required()
     .messages({
-      'any.required': 'Level is required',
       'number.base': 'Level must be a number',
       'number.greater': 'Level must be greater than 0',
+      'any.required': 'Level is required',
     }),
   password: Joi.string().min(8).required()
     .messages({

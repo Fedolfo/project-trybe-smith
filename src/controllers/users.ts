@@ -17,8 +17,9 @@ export const addUser: RequestHandler = async (req, res) => {
     const token = jwt.sign({ data: id, username }, process.env.JWT_SECRET as string, jwtConfig);
 
     res.status(201).json({ token });
-  } catch (err) {
-    res.status(500).json({ message: SERVER_ERROR, error: err });
+  } catch (err: unknown) {
+    const erro = console.error(err);
+    res.status(500).json({ message: SERVER_ERROR, error: erro });
   }
 };
 
