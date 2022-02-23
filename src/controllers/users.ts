@@ -39,7 +39,6 @@ export const addLogin: RequestHandler = async (req, res) => {
 
     res.status(200).json({ token });
   } catch (err: unknown) {
-    const error = console.error(err);
-    res.status(500).json({ message: SERVER_ERROR, erro: error });
+    res.status(500).json({ message: SERVER_ERROR, erro: err });
   }
 };
