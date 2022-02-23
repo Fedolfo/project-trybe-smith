@@ -1,14 +1,12 @@
 import 'dotenv/config';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import { RequestHandler } from 'express';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '../models/connection';
 import { TokenPayload } from '../interface/interface';
 // algumas refencias retirado do Gabriel Gaspar, obrigado!!!!
 interface DATA extends JwtPayload {
   data: TokenPayload
 }
-
-const prisma = new PrismaClient();
 
 async function findNameUser(id: number, name: string) {
   const user = await prisma.users.findUnique({ where: {
