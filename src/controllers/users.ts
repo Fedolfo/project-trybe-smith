@@ -4,6 +4,7 @@ import { RequestHandler } from 'express';
 import * as users from '../services/index';
 
 const SERVER_ERROR = 'Server error';
+const secret = process.env.JWT_SECRET || 'senhasecreta';
 
 export const addUser: RequestHandler = async (req, res) => {
   try {
@@ -14,7 +15,7 @@ export const addUser: RequestHandler = async (req, res) => {
     };
 
     const { id, username } = user;
-    const token = jwt.sign({ data: id, username }, process.env.JWT_SECRET as string, jwtConfig);
+    const token = jwt.sign({ data: id, username }, secret, jwtConfig);
 
     res.status(201).json({ token });
   } catch (err: unknown) {
@@ -38,7 +39,7 @@ export const addLogin: RequestHandler = async (req, res) => {
       expiresIn: '7d',
     };
 
-    const token = jwt.sign({ data: username }, process.env.JWT_SECRET as string, jwtConfig);
+    const token = jwt.sign({ data: username }, secret, jwtConfig);
 
     res.status(200).json({ token });
   } catch (err: unknown) {
