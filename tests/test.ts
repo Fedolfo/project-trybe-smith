@@ -30,7 +30,7 @@ afterAll(async () => {
 // Clean database before tests
 beforeAll(async () => { await recreateDatabase(); });
 
-describe.skip("1 - Crie um endpoint para o cadastro de pessoas usuárias", () => {
+describe("1 - Crie um endpoint para o cadastro de pessoas usuárias", () => {
   // Close connections and server after tests
   afterAll(async () => {
     await dropDatabase();
@@ -245,7 +245,7 @@ describe("2 - Crie um endpoint para o login de pessoas usuárias", () => {
   });
 });
 
-describe.skip("3 - Crie um endpoint para o cadastro de produtos", () => {
+describe("3 - Crie um endpoint para o cadastro de produtos", () => {
   let token: string;
   // Clean database and create one user before tests
   beforeEach((done) => {
@@ -362,7 +362,7 @@ describe.skip("3 - Crie um endpoint para o cadastro de produtos", () => {
   });
 });
 
-describe.skip("4 - Crie um endpoint para a listagem de produtos", () => {
+describe("4 - Crie um endpoint para a listagem de produtos", () => {
   let token: string;
 
   beforeEach(async () => {
@@ -418,7 +418,7 @@ describe.skip("4 - Crie um endpoint para a listagem de produtos", () => {
   });
 });
 
-describe.skip("5 - Crie um endpoint para o cadastro de um pedido", () => {
+describe("5 - Crie um endpoint para o cadastro de um pedido", () => {
   let token: string;
 
   beforeEach(async () => {
@@ -520,7 +520,7 @@ describe.skip("5 - Crie um endpoint para o cadastro de um pedido", () => {
   });
 });
 
-describe.skip("6 - Crie um endpoint para consultar um pedido", () => {
+describe("6 - Crie um endpoint para consultar um pedido", () => {
   let token: string;
 
   beforeEach(async () => {
@@ -601,7 +601,7 @@ describe.skip("6 - Crie um endpoint para consultar um pedido", () => {
   });
 });
 
-describe.skip("7 - Crie um endpoint para listar todos os pedidos", () => {
+describe("7 - Crie um endpoint para listar todos os pedidos", () => {
   let token: string;
 
   beforeEach(async () => {
