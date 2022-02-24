@@ -1,3 +1,11 @@
-import { addUser } from './users';
+import { addUser, addLogin } from './users';
+import { addProduct, allProducts } from './products';
 
-export default addUser;
+export {
+  // users
+  addUser,
+  addLogin,
+  // products
+  addProduct,
+  allProducts,
+};

@@ -16,8 +16,19 @@ interface Login {
   password: string;
 }
 
+interface Product {
+  name: string;
+  amount: string;
+}
+
+interface Order {
+  products: number[];
+}
+
 export {
   User,
   TokenPayload,
   Login,
+  Product,
+  Order,
 };
