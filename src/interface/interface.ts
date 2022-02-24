@@ -1,3 +1,5 @@
+import { Request } from 'express';
+
 interface User {
   id: number;
   username: string;
@@ -9,6 +11,10 @@ interface User {
 interface TokenPayload {
   id: number;
   username: string;
+}
+// referencia gabriel gaspar
+interface Data extends Request {
+  username?: TokenPayload
 }
 
 interface Login {
@@ -31,4 +37,5 @@ export {
   Login,
   Product,
   Order,
+  Data,
 };

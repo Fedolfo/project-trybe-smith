@@ -10,12 +10,10 @@ export const addUser: RequestHandler = async (req, res) => {
   try {
     const user = await users.newUser(req.body);
 
-    const jwtConfig = {
-      expiresIn: '7d',
-    };
-
     const { id, username } = user;
-    const token = jwt.sign({ data: id, username }, secret, jwtConfig);
+    const token = jwt.sign({ data: id, username }, secret, {
+      expiresIn: '7d',
+    });
 
     res.status(201).json({ token });
   } catch (err: unknown) {
@@ -35,11 +33,9 @@ export const addLogin: RequestHandler = async (req, res) => {
       return res.status(401).json({ error: 'Username or password invalid' });
     }
 
-    const jwtConfig = {
+    const token = jwt.sign({ data: username }, secret, {
       expiresIn: '7d',
-    };
-
-    const token = jwt.sign({ data: username }, secret, jwtConfig);
+    });
 
     res.status(200).json({ token });
   } catch (err: unknown) {
