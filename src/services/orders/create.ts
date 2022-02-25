@@ -1,8 +1,19 @@
-// import { Order } from '../../interface/interface';
-// import { prisma } from '../../models/connection';
+import { Order } from '../../interface/interface';
+import { prisma } from '../../models/connection';
 
-// const newProduct = async (createProduct: Order) => {
-//   return { item: product };
-// };
+const newOrder = async (userId: number, { products }: Order) => {
+  await prisma.$transaction(async (transaction) => {
+    const { id: orderId } = await transaction.orders.create({
+      data: { userId },
+    });
 
-// export default newProduct;
+    await Promise.all(products.map((id) => transaction.products.update({
+      where: { id },
+      data: { orderId },
+    })));
+  });
+
+  return { order: { userId, products } };
+};
+
+export default newOrder;

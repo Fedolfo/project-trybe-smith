@@ -27,9 +27,7 @@ export default async (req: Data, res: Response, next: NextFunction) => {
     const receivedIdUser = decoded.data.id;
     const username = await findNameUser(receivedIdUser, receivedUsername);
 
-    if (username) {
-      req.username = username;
-    }
+    req.username = username;
 
     next();
   } catch (err:unknown) {
