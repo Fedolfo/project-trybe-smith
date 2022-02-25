@@ -8,12 +8,20 @@ const SERVER_ERROR = 'Server error';
 export const addOrder: RequestHandler = async (req: Data, res) => {
   const { id } = req.username as JwtPayload;
   try {
-    const product = await orders.newOrder(id, req.body);
+    const { code, data } = await orders.newOrder(id, req.body);
 
-    res.status(201).json(product);
+    res.status(code).json(data);
   } catch (err) {
     res.status(500).json({ message: SERVER_ERROR, erro: err });
   }
 };
 
-export const allOrder = {};
+export const findByIdOrder: RequestHandler = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const { code, data } = await orders.getByIdOrder(Number(id));
+    res.status(code).json(data);
+  } catch (err) {
+    res.status(500).json({ message: SERVER_ERROR, erro: err });
+  }
+};

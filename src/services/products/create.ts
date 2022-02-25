@@ -6,7 +6,7 @@ const newProduct = async (createProduct: Product) => {
     data: createProduct,
   });
 
-  return { item: product };
+  return { code: 201, data: { item: product } };
 };
 
 export default newProduct;

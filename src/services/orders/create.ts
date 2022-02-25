@@ -13,7 +13,7 @@ const newOrder = async (userId: number, { products }: Order) => {
     })));
   });
 
-  return { order: { userId, products } };
+  return { code: 201, data: { order: { userId, products } } };
 };
 
 export default newOrder;

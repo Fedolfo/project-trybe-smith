@@ -2,7 +2,7 @@ import { prisma } from '../../models/connection';
 
 const allProducts = async () => {
   const products = await prisma.products.findMany();
-  return products;
+  return { code: 200, data: products };
 };
 
 export default allProducts;

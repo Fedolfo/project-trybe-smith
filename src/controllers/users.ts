@@ -8,14 +8,14 @@ const secret = process.env.JWT_SECRET || 'senhasecreta';
 
 export const addUser: RequestHandler = async (req, res) => {
   try {
-    const user = await users.newUser(req.body);
+    const { code, data } = await users.newUser(req.body);
 
-    const { id, username } = user;
+    const { id, username } = data;
     const token = jwt.sign({ data: id, username }, secret, {
       expiresIn: '7d',
     });
 
-    res.status(201).json({ token });
+    res.status(code).json({ token });
   } catch (err: unknown) {
     res.status(500).json({ message: SERVER_ERROR, error: err });
   }
@@ -24,9 +24,9 @@ export const addUser: RequestHandler = async (req, res) => {
 export const addLogin: RequestHandler = async (req, res) => {
   try {
     const { username, password } = req.body;
-    const login = await users.login({ username, password });
+    const { code, data } = await users.login({ username, password });
 
-    const findCredentials = login.find((user) =>
+    const findCredentials = data.find((user) =>
       user.username === username || user.password === password);
 
     if (!findCredentials) {
@@ -37,7 +37,7 @@ export const addLogin: RequestHandler = async (req, res) => {
       expiresIn: '7d',
     });
 
-    res.status(200).json({ token });
+    res.status(code).json({ token });
   } catch (err: unknown) {
     res.status(500).json({ message: SERVER_ERROR, erro: err });
   }

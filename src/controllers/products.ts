@@ -5,9 +5,9 @@ const SERVER_ERROR = 'Server error';
 
 export const addProduct: RequestHandler = async (req, res) => {
   try {
-    const product = await products.newProduct(req.body);
+    const { code, data } = await products.newProduct(req.body);
 
-    res.status(201).json(product);
+    res.status(code).json(data);
   } catch (err) {
     res.status(500).json({ message: SERVER_ERROR, erro: err });
   }
@@ -15,8 +15,8 @@ export const addProduct: RequestHandler = async (req, res) => {
 
 export const allProducts: RequestHandler = async (req, res) => {
   try {
-    const getProducts = await products.allProducts();
-    res.status(200).json(getProducts);
+    const { code, data } = await products.allProducts();
+    res.status(code).json(data);
   } catch (err) {
     res.status(500).json({ message: SERVER_ERROR, erro: err });
   }
