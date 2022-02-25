@@ -39,7 +39,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
   - [Requisitos Bônus](#requisitos-bônus)
     - [6 - Crie um endpoint para consultar um pedido](#6---Crie-um-endpoint-para-consultar-um-pedido)
     - [7 - Crie um endpoint para listar os pedidos](#7---Crie-um-endpoint-para-listar-os-pedidos)
-    
+
   - [Depois de terminar o desenvolvimento (opcional)](#depois-de-terminar-o-desenvolvimento-opcional)
 - [Revisando um pull request](#revisando-um-pull-request)
 - [Avisos finais](#avisos-finais)
@@ -58,7 +58,7 @@ Neste projeto, você será capaz de:
 
 # Entregáveis
 
-Para entregar o seu projeto você deverá criar um _Pull Request_ neste repositório.
+Para entregar o seu projeto você deverá criar um _Pull Request_ neste repositório
 
 Lembre-se que você pode consultar nosso conteúdo sobre [Git & GitHub](https://app.betrybe.com/course/fundamentals/git) sempre que precisar!
 
@@ -183,7 +183,7 @@ O código para cadastro de pessoas usuárias deve ser criado por você utilizand
 
 ---
 
-Há dois arquivos no diretório `./src/`: `index.ts` e `app.ts`, **ambos não devem ser renomeados ou apagados**. 
+Há dois arquivos no diretório `./src/`: `index.ts` e `app.ts`, **ambos não devem ser renomeados ou apagados**.
 
 Você poderá fazer modificações em ambos os arquivos, porém **no arquivo `app.ts` o seguinte trecho de código não deve ser removido**:
 
