@@ -6,6 +6,7 @@ import allProducts from './products/getProducts';
 
 import newOrder from './orders/create';
 import getByIdOrder from './orders/getByIdOrder';
+import getAllOrders from './orders/getAllOrders';
 
 export {
   // users
@@ -17,4 +18,5 @@ export {
   // orders
   newOrder,
   getByIdOrder,
+  getAllOrders,
 };

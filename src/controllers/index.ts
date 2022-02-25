@@ -1,6 +1,6 @@
 import { addUser, addLogin } from './users';
 import { addProduct, allProducts } from './products';
-import { addOrder, findByIdOrder } from './order';
+import { addOrder, findByIdOrder, allOrders } from './order';
 
 export {
   // users
@@ -12,4 +12,5 @@ export {
   // Orders
   addOrder,
   findByIdOrder,
+  allOrders,
 };

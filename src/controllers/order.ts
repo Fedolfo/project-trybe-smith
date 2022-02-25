@@ -25,3 +25,12 @@ export const findByIdOrder: RequestHandler = async (req, res) => {
     res.status(500).json({ message: SERVER_ERROR, erro: err });
   }
 };
+
+export const allOrders: RequestHandler = async (req, res) => {
+  try {
+    const { code, data } = await orders.getAllOrders();
+    res.status(code).json(data);
+  } catch (err) {
+    res.status(500).json({ message: SERVER_ERROR, erro: err });
+  }
+};
